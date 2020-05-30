@@ -1390,7 +1390,41 @@ function IsInt(data)
 	}
 }
 
-var preload = [];
+var preload = [
+"./img/bigbox.png",
+"./img/biobg.png",
+"./img/dice.png",
+"./img/digit1.png",
+"./img/digit2.png",
+"./img/digit3.png",
+"./img/digit4.png",
+"./img/digit5.png",
+"./img/digit6.png",
+"./img/innerself.png",
+"./img/instr-bg.png",
+"./img/inventorybg.png",
+"./img/items.png",
+"./img/Level-bg.png",
+"./img/ludo_bg.png",
+"./img/minmax.png",
+"./img/notify.png",
+"./img/options-bg.png",
+"./img/options-bg_active.png",
+"./img/player.png",
+"./img/play_bg.png",
+"./img/ques-box.png",
+"./img/ques-holder.jpg",
+"./img/screen1.jpg",
+"./img/screen2.jpg",
+"./img/screen4.jpg",
+"./img/selectLevel-bg.png",
+"./img/self.png",
+"./img/submitBtn.png",
+"./img/sucked.jpg",
+"./img/surface.png",
+"./img/welcome.jpg",
+"./img/wellDone-bg.jpg"
+];
 	
 var promises = [];
 for (var i = 0; i < preload.length; i++) {
