@@ -389,6 +389,7 @@ div#dice {
   	left: 35px;
 	  cursor: default;
 }
+
 .human {
     width: 70px;    
     height: 100px;    
@@ -399,6 +400,16 @@ div#dice {
 	cursor: default;
 	animation: none;
 }
+.shop {
+    width: 70px;    
+    height: 100px;    
+    background: url(../img/shop.png) no-repeat;
+    position: absolute;    
+      bottom: 375px;
+  	left: 35px;
+	  cursor: default;
+}
+
 #innerself
 {
 	animation: none;

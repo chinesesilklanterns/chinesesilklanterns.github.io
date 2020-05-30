@@ -127,6 +127,7 @@ playertoken.setpos = function(curpos) {
 			document.getElementById('reddice').onclick = rolldice;	
 			document.getElementById('invicon').onclick = showinventory;
 			document.getElementById('charicon').onclick = showplayerstatus;	
+			document.getElementById('shopicon').onclick = showshop;
 		}, 400);		
 	}
 }
@@ -261,6 +262,7 @@ var rolldice = function()
 	document.getElementById('reddice').onclick = "";	//remove click from the roll btn
 	document.getElementById('invicon').onclick = "";
 	document.getElementById('charicon').onclick = "";
+	document.getElementById('shopicon').onclick = "";
 	
 	var randomNum;
 	
@@ -352,16 +354,24 @@ function filterunwantedtf(arr)
 	return newarr
 }
 
-var setQuestion = function()
+var setQuestion = function(fixeddata)
 {
 	var currcelldata = null;
-	var cl = cellsdata.length;
-	for(var i=0;i<cl;++i)
+	
+	if(fixeddata)
 	{
-		if(cellsdata[i].cellid.indexOf(playertoken.currentpos)!=-1)
+		currcelldata = fixeddata;
+	}
+	else
+	{
+		var cl = cellsdata.length;
+		for(var i=0;i<cl;++i)
 		{
-			currcelldata = cellsdata[i];
-			break;
+			if(cellsdata[i].cellid.indexOf(playertoken.currentpos)!=-1)
+			{
+				currcelldata = cellsdata[i];
+				break;
+			}
 		}
 	}
 
@@ -521,6 +531,7 @@ var setQuestion = function()
 			document.getElementById('reddice').onclick = rolldice;
 			document.getElementById('invicon').onclick = showinventory;
 			document.getElementById('charicon').onclick = showplayerstatus;
+			document.getElementById('shopicon').onclick = showshop;
 		}, 800);
 	}
 }
@@ -597,6 +608,7 @@ function ApplyEffect(seldat)
 				document.getElementById('reddice').onclick = "";	//remove click from the roll btn
 				document.getElementById('invicon').onclick = "";
 				document.getElementById('charicon').onclick = "";
+				document.getElementById('shopicon').onclick = "";
 				setTimeout(function()
 				{
 					MovePlayer(seldat.value);
@@ -706,10 +718,13 @@ function ApplyEffect(seldat)
 			PrepareTF();
 			attribute="breast size"; adjust_attrib(attribute,1); break;
 			case "Gender Change": 
-			PrepareTF();
-				if(playertoken.stats["breast size"]==0){adjust_attrib("breast size",1); }
-				if(playertoken.stats["ass size"]==0){adjust_attrib("ass size",1); }
-				if(playertoken.stats["hair length"]==0){adjust_attrib("hair length",1); }
+				PrepareTF();
+				if(playertoken.stats["breast size"]<2)
+				{
+					adjust_attrib("breast size",1); 
+				}
+				if(playertoken.stats["ass size"]<2){adjust_attrib("ass size",1); }
+				if(playertoken.stats["hair length"]<2){adjust_attrib("hair length",1); }
 				playertoken.stats["height"] -= 6;
 				playertoken.stats["height"] = playertoken.stats["height"]<minheight?minheight:playertoken.stats["height"];
 				attribute="physique"; 
@@ -718,7 +733,16 @@ function ApplyEffect(seldat)
 			break;
 			case "Extra Feminization": 
 			PrepareTF();
-			adjust_attrib("breast size",2);adjust_attrib("ass size",1);	adjust_attrib("hair length",1);		
+			if(playertoken.stats["breast size"]<2)
+			{
+				adjust_attrib("breast size",2);
+			}
+			else
+			{
+				adjust_attrib("breast size",1);
+			}
+			adjust_attrib("ass size",1);	
+			adjust_attrib("hair length",1);		
 			attribute="physique"; adjust_attrib(attribute,1); 
 			break;
 			case "Shrinking": 
@@ -756,7 +780,7 @@ function ApplyEffect(seldat)
 			case "Exhibitionist": PrepareTF();attribute="exhibitionist"; adjust_attrib(attribute,1); break;
 			case "Lewd Dreams": PrepareTF();attribute="lewd dreams"; adjust_attrib(attribute,1); break;
 			case "Age Regression": PrepareTF();attribute="age"; 
-			playertoken.stats["age"] -= 4;
+			playertoken.stats["age"] -= 5;
 			playertoken.stats["age"] = playertoken.stats["age"]<minage?minage:playertoken.stats["age"];
 			if(playertoken.stats["age"]<20)
 			{
@@ -853,6 +877,7 @@ var submitAnswer = function()
 		document.getElementById('reddice').onclick = rolldice;
 		document.getElementById('invicon').onclick = showinventory;
 		document.getElementById('charicon').onclick = showplayerstatus;
+		document.getElementById('shopicon').onclick = showshop;
 	}, 1000);
 }
 
@@ -913,6 +938,11 @@ function showpopup(str,img,onnext)
 	html+= str;
 	document.getElementById('popmsg').innerHTML = html;
 	$('.overlay, .sixDigitMsg').show();
+}
+
+function showshop()
+{
+	setQuestion(itemshopdata);
 }
 
 function showplayerstatus()
@@ -1034,6 +1064,7 @@ function useinvitem()
 			document.getElementById('reddice').onclick = "";	//remove click from the roll btn
 			document.getElementById('invicon').onclick = "";
 			document.getElementById('charicon').onclick = "";
+			document.getElementById('shopicon').onclick = "";
 			setTimeout(function()
 			{
 				MovePlayer(6);
@@ -1405,6 +1436,7 @@ var preload = [
 "./img/instr-bg.png",
 "./img/inventorybg.png",
 "./img/items.png",
+"./img/shop.png",
 "./img/Level-bg.png",
 "./img/ludo_bg.png",
 "./img/minmax.png",
