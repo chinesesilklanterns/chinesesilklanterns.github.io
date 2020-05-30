@@ -148,7 +148,7 @@ playertoken.gameover = function()
 	{
 		prog = "You made it through nearly unchanged. Well, except for one or two things...";
 	}
-	else if(tfcounter<=8)
+	else if(tfcounter<=9)
 	{
 		prog = "Hmm. Guess you're gonna have a couple of changes to get used to...";		
 	}
@@ -404,7 +404,7 @@ var setQuestion = function()
 		}
 		else if(currcelldata.category=="CursedTeleport")
 		{
-			var steps1 = Math.floor(Math.random() * 6) + 1;
+			var steps1 = Math.floor(Math.random() * 6) + 7;
 			currentOptions = shuffle(filterunwantedtf(fxdata({category:"CursedTransformation"}).get())).slice(0,1);
 			if(currentOptions.length==0)
 			{
@@ -717,7 +717,7 @@ function ApplyEffect(seldat)
 			break;
 			case "Extra Feminization": 
 			PrepareTF();
-			adjust_attrib("breast size",2);adjust_attrib("ass size",1);			
+			adjust_attrib("breast size",2);adjust_attrib("ass size",1);	adjust_attrib("hair length",1);		
 			attribute="physique"; adjust_attrib(attribute,1); 
 			break;
 			case "Shrinking": 
