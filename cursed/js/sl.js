@@ -425,10 +425,11 @@ var setQuestion = function()
 		else if(currcelldata.category=="TreasureChest")
 		{			
 			currentOptions.push({category: "TreasureChest", effectname: "Open Chest", img:"none", value: 0});
-			currentOptions.push({category: "TreasureChest", effectname: "Ignore Chest", img:"none", value: 0});			
-			if(qtyitem("Glyph of Unlocking"))
+			currentOptions.push({category: "TreasureChest", effectname: "Ignore Chest", img:"none", value: 0});		
+			var qtyglyph = qtyitem("Glyph of Unlocking");
+			if(qtyglyph)
 			{
-				currentOptions.push({category: "TreasureChest", effectname: "Disarm Chest",  subtitle:"Uses 1 Glyph of Unlocking", img:"none", value: 0});
+				currentOptions.push({category: "TreasureChest", effectname: "Activate Glyph of Unlocking",  subtitle:(qtyglyph+" Remaining"), img:"none", value: 0});
 			}
 		}
 		else if(currcelldata.category=="WildMagic")
@@ -619,7 +620,7 @@ function ApplyEffect(seldat)
 				useconsumable("Glyph of Protection",1);
 			break;
 			
-			case "Disarm Chest":
+			case "Activate Glyph of Unlocking":
 			case "Open Chest":
 			{
 				showpopupafter = false;
@@ -627,7 +628,7 @@ function ApplyEffect(seldat)
 				var isTrapped = (Math.floor(Math.random() * 3)==0);
 				currentOptions = shuffle(filterunwantedtf(fxdata({category:"CursedTransformation"}).get())).slice(0,1);
 				
-				if(seldat.effectname=="Disarm Chest")
+				if(seldat.effectname=="Activate Glyph of Unlocking")
 				{
 					useconsumable("Glyph of Unlocking",1);
 					isTrapped = false;
