@@ -6,6 +6,13 @@
   I hope you enjoyed playing this as much as I did making it. 
   If you want to contact me, find me on Reddit (https://reddit.com/u/chinesesilklanterns)
   If you've found content that you think I might enjoy, do share it with me!
+  
+  License: You are free to use and redistribute this game, associated code and files entirely free of charge in a non-commercial setting, so long as proper attribution is given to me. 
+  I do not own the copyright to the illustrated images in the 'icons' folder used in this game, they belong to various artists found online.
+  You agree not to hold me responsible for any damages that may result from your use of these files, use at your own risk.
+  You may create derivative works, using all or parts of the files provided here, as long as the abovementioned acknowledgement is retained.
+  
+  Basically, if you share or modify this, be nice and credit me.
 */
 
 //cell types
@@ -304,7 +311,7 @@ var playerTemplates = [
 "physique":0,
 "ass size":0,},
 {"name":"John","last name":"Smith","age":24,"height":180,"gender":0,"hair color":"Brown","eye color":"Hazel",
-"desc":"", //hidden sandbox character
+"desc":"", //hidden sandbox character, do not remove
 "gear":[],
 "strength":1,
 "stamina":1,
@@ -331,11 +338,11 @@ var items = [
 {name:"Glyph of Protection", desc:"A pebble etched with a faded glyph", effect:"Triggers a temporary shield around you, granting protection against some magical effects when activated.",  img:"glyph1.jpg", usable:false, stacks:true, gameitm:1},
 {name:"Glyph of Unlocking", desc:"A pebble etched with a faded glyph", effect:"Used to disarm potential traps in treasure chests.",  img:"glyph3.jpg", usable:false, stacks:true, gameitm:1},
 
+// These were item concepts once, but they've been removed during the streamlining of the game
+
 //cursed items, single use, no stack
 //{name:"Juliet's Amulet", desc:"A tarnished brass amulet set with a pink gemstone.", effect:"When equipped, transforms you into a girl named Juliet.",  img:"", usable:true, cursed:true, isconsumed:false, multiuse:false, stacks:false},
 //{name:"Mood Ring", desc:"A plain ring that seems to be stuck on the color red.", effect:"When equipped, this ring puts you in the mood... by making you horny.",  img:"", usable:true, cursed:true, isconsumed:false, multiuse:false, stacks:false},
-
-
 //single use useful, no stack
 //{name:"Blue Loaded Die", desc:"A six sided plastic die.", effect:"When equipped, adds a -1 modifier to all future dice rolls (except 1s).",  img:"", usable:true, cursed:false, isconsumed:false, multiuse:false, stacks:false},
 //{name:"Green Loaded Die", desc:"A six sided plastic die.", effect:"When equipped, adds a +1 modifier to all future dice rolls (except 6s).",  img:"", usable:true, cursed:false, isconsumed:false, multiuse:false, stacks:false},
@@ -344,7 +351,6 @@ var items = [
 //{name:"Growth Serum", desc:"A vial containing a green liquid.", effect:"Drink this potion to grow taller. Also ages you slightly.",  img:"", usable:true, cursed:false, isconsumed:true, multiuse:true, stacks:true},
 //{name:"Yin-Yang Scroll", desc:"A crumpled old scroll with the yin-yang symbol drawn on it.", effect:"When activated, switches your orientation.",  img:"", usable:true, cursed:false, isconsumed:true, multiuse:true, stacks:false},
 //{name:"Hair Scissors", desc:"A pair of steel haircut scissors.", effect:"When activated, trims your hair short.",  img:"", usable:true, cursed:false, isconsumed:false, multiuse:false, stacks:false},
-
 //flavor items, single use, no stack
 //{name:"Leather Briefcase", desc:"A nondescript leather briefcase.", effect:"Contains $20,000 in legitimate unmarked bills.",  img:"", usable:false, stacks:false},
 //{name:"Toy Wand", desc:"A short stick made of cheap plastic.", effect:"Allows the user to conjure any object made of plastic that's smaller than a toaster. Objects disappear in 24 hours.",  img:"", usable:false, stacks:false},
@@ -352,6 +358,5 @@ var items = [
 //{name:"Unbreakable Rope", desc:"A coil of thin rope, about 10 feet.", effect:"This rope is unbreakable, and also excellect for tying knots and binding things.",  img:"", usable:false, stacks:false},
 //{name:"Hand Mirror", desc:"A handheld mirror with a polished surface.", effect:"This mirror shows a reflection of the environment, but from a week ago.",  img:"", usable:false, stacks:false},
 //{name:"Sunglasses", desc:"A pair of stylish sunglasses.", effect:"Allows the wearer to see through clothing.",  img:"", usable:false, stacks:false},
-
 
 ];
