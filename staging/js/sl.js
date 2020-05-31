@@ -184,14 +184,14 @@ var selectedchar = function() {
 	{
 		playertoken.stats["name"] = document.getElementById('ifname').value;
 		playertoken.stats["last name"] = document.getElementById('ilname').value;
-		playertoken.stats["age"] = document.getElementById('iage').value;	
-		playertoken.stats["height"] = document.getElementById('iheight').value;		
+		playertoken.stats["age"] = parseInt(document.getElementById('iage').value);	
+		playertoken.stats["height"] = parseInt(document.getElementById('iheight').value);		
 		playertoken.stats["hair color"] = document.getElementById('ihairc').value;
 		playertoken.stats["eye color"] = document.getElementById('ieyec').value;
-		playertoken.stats["orientation"] = document.getElementById('iori').value;
+		playertoken.stats["orientation"] = parseInt(document.getElementById('iori').value);
 		
 		
-		var igd = document.getElementById('igender').value;
+		var igd = parseInt(document.getElementById('igender').value);
 		playertoken.stats["gender"] = igd;
 		if(igd!=0)
 		{
