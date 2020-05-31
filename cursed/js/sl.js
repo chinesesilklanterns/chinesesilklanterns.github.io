@@ -91,6 +91,8 @@ var minage = 16;
 var showtfeffect = false;
 var tfcounter = 0;
 var money = 0;
+var issandbox = false;
+var loadeddice = false;
 
 playertoken.setpos = function(curpos) {
 
@@ -174,8 +176,40 @@ var nextscreen = function(oldscreen, newscreen) {
 	}
 }
 
-var selectlevel = function(level) {
+var selectedchar = function() {
 	nextscreen('screen2', 'screen3');
+	loadeddice = false;
+	//if sandbox mode selected, handle it
+	if(issandbox) //note that these ids will not exist in DOM if not in sandbox mode. let the game crash, i don't care.
+	{
+		playertoken.stats["name"] = document.getElementById('ifname').value;
+		playertoken.stats["last name"] = document.getElementById('ilname').value;
+		playertoken.stats["age"] = parseInt(document.getElementById('iage').value);	
+		playertoken.stats["height"] = parseInt(document.getElementById('iheight').value);		
+		playertoken.stats["hair color"] = document.getElementById('ihairc').value;
+		playertoken.stats["eye color"] = document.getElementById('ieyec').value;
+		playertoken.stats["orientation"] = parseInt(document.getElementById('iori').value);
+		
+		
+		var igd = parseInt(document.getElementById('igender').value);
+		playertoken.stats["gender"] = igd;
+		if(igd!=0)
+		{
+			playertoken.stats["breast size"] = 1;
+			playertoken.stats["hair length"] = 1;
+			playertoken.stats["ass size"] = 1;
+		}
+		
+		if(document.getElementById("iinfsilver").checked)
+		{
+			playertoken.inv = [{name:"Silver Coin", qty:999}];
+		}
+		if(document.getElementById("iloaddice").checked)
+		{
+			loadeddice = true;
+		}
+	}
+	
 	if(document.querySelector('.active'))
 		document.querySelector('.active').className = "";
 }
@@ -267,6 +301,10 @@ var rolldice = function()
 	var randomNum;
 	
 	randomNum = Math.floor(Math.random() * 6) + 1;
+	if(loadeddice)
+	{
+		randomNum = 1;
+	}
 	//randomNum = 199;//((playertoken.currentpos == "Start")?1:0);
 	
 	console.log('dice rolled: ' + randomNum);
@@ -1087,8 +1125,28 @@ var setactiveans = function(ele)
 	}
 }
 
+function selectsandbox(ele)
+{
+	selectchar(ele);
+	setactiveans(ele);
+	issandbox = true;
+	document.getElementById('bios').style.display = 'block';
+	document.getElementById('bio').innerHTML = "First Name: <input type=text id=ifname value='John' maxlength=15 size=8><br/>"
+	+"Last Name: <input type=text id=ilname value='Smith' maxlength=15 size=8><br/>"
+	+"Age: <input type=number id=iage value=24 min=16 max=80><br/>"
+	+"Height (cm): <input type=number id=iheight value=180 min="+minheight+" max=200><br/>"
+	+"Gender: <select id=igender><option value=0>M</option> <option value=1>F</option></select><br/>"
+	+"Orientation: <select id=iori><option value=0>Prefers F</option> <option value=1>Prefers M</option></select><br/>"
+	+"Hair Color: <input type=text id=ihairc value='Brown' maxlength=15 size=8><br/>"
+	+"Eye Color: <input type=text id=ieyec value='Hazel' maxlength=15 size=8><br/>"
+	+"Infinite Silver Coins: <input type=checkbox id=iinfsilver>"
+	+"Loaded Dice: <input type=checkbox id=iloaddice>";
+	document.getElementById('bio2').innerHTML = "Sandbox mode allows customization of your starting character, and some cheat options.<br/><br/>This mode is experimental, and bad user input may crash your game. Not recommended for first playthrough.";
+}
+
 function selectchar(ele)
 {
+	issandbox = false;
 	setactiveans(ele);
 	document.getElementById('bios').style.display = 'block';
 	var tmp = playerTemplates[ele.value];

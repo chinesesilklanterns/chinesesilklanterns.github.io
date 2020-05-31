@@ -302,6 +302,22 @@ var playerTemplates = [
 "breast size":0,
 "hair length":0,
 "physique":0,
+"ass size":0,},
+{"name":"John","last name":"Smith","age":24,"height":180,"gender":0,"hair color":"Brown","eye color":"Hazel",
+"desc":"", //hidden sandbox character
+"gear":[],
+"strength":1,
+"stamina":1,
+"dexterity":1,
+"eyesight":1,
+"constitution":0,
+"intelligence":0,
+"charisma":1,
+"talent":0,
+"luck":1,
+"breast size":0,
+"hair length":0,
+"physique":0,
 "ass size":0,}
 ];
 

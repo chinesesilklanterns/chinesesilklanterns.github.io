@@ -292,35 +292,39 @@ font-size: 20px;
     margin: 0px auto;
     font-size: 25px;    
     background: url(../img/Level-bg.png) no-repeat;    
-    line-height: 170px;        
+    line-height: 140px;        
     display: block;    
     color: #fff;    
 	cursor: default;    
 	
     font-weight: normal;
     width: 220px;
-    height: 130px;
+    height: 100px;
     position: absolute;
     top: 90px;
     left: 80px;
 }
 .Level-Theme li:nth-child(2) {
-    top: 175px;
+    top: 155px;
     z-index: 8;
 }
 
 .Level-Theme li:nth-child(3) {
-    top: 260px;
+    top: 220px;
     z-index: 7;
 }
 
 .Level-Theme li:nth-child(4) {
-    top: 345px;
+    top: 285px;
     z-index: 6;
 }
 
 .Level-Theme li:nth-child(5) {
-    top: 430px;
+    top: 350px;
+	 z-index: 5;
+}
+.Level-Theme li:nth-child(6) {
+    top: 435px;
 }
 
 
@@ -906,7 +910,7 @@ display: none;
   text-align: center;
 }
 
-select {
+/*select {
   
   -moz-box-sizing:border-box;
 -webkit-box-sizing:border-box;
@@ -933,7 +937,7 @@ box-sizing:border-box;
     cursor: default;
 	width: 200px;
 	margin: 20px auto;
-}
+}*/
 
 /* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
