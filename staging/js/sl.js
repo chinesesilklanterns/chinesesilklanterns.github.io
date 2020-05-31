@@ -1131,14 +1131,14 @@ function selectsandbox(ele)
 	setactiveans(ele);
 	issandbox = true;
 	document.getElementById('bios').style.display = 'block';
-	document.getElementById('bio').innerHTML = "First Name: <input type=text id=ifname value='John' maxlength=15 size=10><br/>"
-	+"Last Name: <input type=text id=ilname value='Smith' maxlength=15 size=10><br/>"
+	document.getElementById('bio').innerHTML = "First Name: <input type=text id=ifname value='John' maxlength=15 size=8><br/>"
+	+"Last Name: <input type=text id=ilname value='Smith' maxlength=15 size=8><br/>"
 	+"Age: <input type=number id=iage value=24 min=16 max=80><br/>"
 	+"Height (cm): <input type=number id=iheight value=180 min="+minheight+" max=200><br/>"
 	+"Gender: <select id=igender><option value=0>M</option> <option value=1>F</option></select><br/>"
 	+"Orientation: <select id=iori><option value=0>Prefers F</option> <option value=1>Prefers M</option></select><br/>"
-	+"Hair Color: <input type=text id=ihairc value='Brown' maxlength=15 size=10><br/>"
-	+"Eye Color: <input type=text id=ieyec value='Hazel' maxlength=15 size=10><br/>"
+	+"Hair Color: <input type=text id=ihairc value='Brown' maxlength=15 size=8><br/>"
+	+"Eye Color: <input type=text id=ieyec value='Hazel' maxlength=15 size=8><br/>"
 	+"Infinite Silver Coins: <input type=checkbox id=iinfsilver>"
 	+"Loaded Dice: <input type=checkbox id=iloaddice>";
 	document.getElementById('bio2').innerHTML = "Sandbox mode allows customization of your starting character, and some cheat options.<br/><br/>This mode is experimental, and bad user input may crash your game. Not recommended for first playthrough.";
