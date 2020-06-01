@@ -83,6 +83,7 @@ playertoken.stats = {
 "sleepy":0,
 "ditzy":0,
 "noisy":0,
+"denial":0,
 
 "palette swap":0,
 "name change":0
@@ -348,8 +349,12 @@ function filterunwantedtf(arr)
 	{
 		if(arr[i].requiresattribcustom)
 		{
+			//apply custom filtering for orientation.
+			if(arr[i].requiresattribcustom=="orientation" && playertoken.stats["orientation"]>0)
+			{				
+			}
 			//apply custom filtering for age.
-			if(arr[i].requiresattribcustom=="age" && playertoken.stats["age"]<=minage)
+			else if(arr[i].requiresattribcustom=="age" && playertoken.stats["age"]<=minage)
 			{				
 			}
 			//filter height
@@ -797,7 +802,9 @@ function ApplyEffect(seldat)
 			playertoken.stats["height"] = playertoken.stats["height"]<minheight?minheight:playertoken.stats["height"];
 			break;
 			case "Ass Expansion": PrepareTF();attribute="ass size"; adjust_attrib(attribute,1); break;
-			case "Orientation Change": PrepareTF();attribute="orientation"; adjust_attrib(attribute,1); break;
+			case "Orientation Change": PrepareTF();attribute="orientation"; 
+			playertoken.stats["orientation"] = 1 + Math.floor(Math.random() * 2);
+			break;
 			case "Increased Libido": PrepareTF();attribute="increased libido"; adjust_attrib(attribute,1); break;
 			case "Increased Sensitivity": PrepareTF();attribute="increased sensitivity"; adjust_attrib(attribute,1); break;
 			case "Increased Fluids": PrepareTF();attribute="increased fluids"; adjust_attrib(attribute,1); break;
@@ -843,6 +850,7 @@ function ApplyEffect(seldat)
 			case "Sleepy": PrepareTF();attribute="sleepy"; adjust_attrib(attribute,1); break;
 			case "Ditzy": PrepareTF();attribute="ditzy"; adjust_attrib(attribute,1); break;
 			case "Noisy": PrepareTF();attribute="noisy"; adjust_attrib(attribute,1); break;
+			case "Orgasm Denial": PrepareTF();attribute="denial"; adjust_attrib(attribute,1); break;
 			case "Clumsy": PrepareTF();attribute="dexterity"; adjust_attrib(attribute,-10); break;
 			case "Enervation": PrepareTF();attribute="stamina"; adjust_attrib(attribute,-10); break;
 			case "Glasses": PrepareTF();attribute="eyesight"; adjust_attrib(attribute,-10); break;
@@ -1143,7 +1151,7 @@ function selectsandbox(ele)
 	+"Age: <input type=number id=iage value=24 min=16 max=80><br/>"
 	+"Height (cm): <input type=number id=iheight value=180 min="+minheight+" max=200><br/>"
 	+"Gender: <select id=igender><option value=0>M</option> <option value=1>F</option></select><br/>"
-	+"Orientation: <select id=iori><option value=0>Prefers F</option> <option value=1>Prefers M</option></select><br/>"
+	+"Orientation: <select id=iori><option value=0>Prefers F</option> <option value=1>Prefers M</option><option value=2>Bisexual</option></select><br/>"
 	+"Hair Color: <input type=text id=ihairc value='Brown' maxlength=15 size=8><br/>"
 	+"Eye Color: <input type=text id=ieyec value='Hazel' maxlength=15 size=8><br/>"
 	+"Infinite Silver Coins: <input type=checkbox id=iinfsilver>"
@@ -1258,6 +1266,7 @@ function stringify_player(verbose)
 		arr.push("sleepy");
 		arr.push("ditzy");
 		arr.push("noisy");
+		arr.push("denial");
 		
 		arr.push("strength");
 		arr.push("stamina");
