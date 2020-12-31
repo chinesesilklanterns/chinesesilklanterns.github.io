@@ -84,6 +84,7 @@ playertoken.stats = {
 "ditzy":0,
 "noisy":0,
 "denial":0,
+"pierced nipples":0,
 
 "palette swap":0,
 "name change":0
@@ -871,6 +872,7 @@ function ApplyEffect(seldat)
 			playertoken.stats["name"] = femname[Math.floor(Math.random() * femname.length)];
 			extrastr += "<br/><br/>Your name is now "+playertoken.stats["name"]+ " - you just know this instinctively. It feels strange to think of yourself by any other name.";
 			break;
+			case "Pierced Nipples": PrepareTF();attribute="pierced nipples"; adjust_attrib(attribute,1); break;
 			case "Choose Nothing":
 			attribute="";
 			giveitem("Silver Coin",1);
@@ -1267,7 +1269,8 @@ function stringify_player(verbose)
 		arr.push("ditzy");
 		arr.push("noisy");
 		arr.push("denial");
-		
+		arr.push("pierced nipples");
+
 		arr.push("strength");
 		arr.push("stamina");
 		arr.push("dexterity");
